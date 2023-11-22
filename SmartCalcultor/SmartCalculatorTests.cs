@@ -49,5 +49,32 @@ namespace SmartCalcultor
 
 
         }
+
+        [Test]
+        public void SubstractTwoPositiveNumbers()
+        {
+
+            var blankField = driver.FindElementById("mobi.appplus.calculator.plus:id/scrollViewMain");
+            blankField.Clear();
+
+            var digitTwo = driver.FindElementById("mobi.appplus.calculator.plus:id/btn2");
+            digitTwo.Click();
+
+            var minusButton = driver.FindElementById("mobi.appplus.calculator.plus:id/btnSub");
+            minusButton.Click();
+
+            var digitOne = driver.FindElementById("mobi.appplus.calculator.plus:id/btn1");
+            digitOne.Click();
+
+            var equalButton = driver.FindElementById("mobi.appplus.calculator.plus:id/btnEqual");
+            equalButton.Click();
+
+            var resultField = driver.FindElementByXPath("//android.widget.TextView[5]");
+
+            Assert.That(resultField, Is.Not.Null);
+            Assert.That(resultField.Text, Is.EqualTo("1"));
+
+
+        }
     }
 }
